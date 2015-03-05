@@ -19,7 +19,7 @@ window.ContactManager = {
         collection: contacts
       });
 
-      $('.main-container').html(contactsView.render().$el);
+      $('#coreCont').html(contactsView.render().$el);
     });
 
     router.on('route:newContact', function() {

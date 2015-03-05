@@ -1,3 +1,5 @@
+ul,li {list-style:none;}
+
 .bs-header {
   position: relative;
   padding: 30px 15px;
@@ -81,3 +83,8 @@ a.thumbnail:focus,
 a.thumbnail.active {
   border-color: #563d7c;
 }
+
+#coreCont {padding-top:20px;}
+.money_list {zoom:1;overflow:hidden;}
+.money_list li {height:37px;line-height:35px;zoom:1;overflow:hidden;text-align:center;}
+.money_list li div {float:left;width:16%;border:1px solid #ccc;}
