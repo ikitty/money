@@ -5,9 +5,19 @@ window.AlexMoney = {
 
     start: function (data) {
         //var items = new AlexMoney.Collections.Items(data.defaults),
-        var items = new this.Collections.Items(data.defaults),
-            router = new this.Router();
-        var _this = this ; 
+        //var items = new this.Collections.Items(data.defaults),
+
+        var _this = this 
+            ,router = new this.Router()
+            ,C = new AlexMoney.Collections.Items()
+            ; 
+
+        this.C = C ;
+        C.fetch();
+
+        if (C.isEmpty()) {
+            this.createTestData();
+        }
 
         router.on('route:home', function () {
             router.navigate('items', {
@@ -18,7 +28,7 @@ window.AlexMoney = {
 
         router.on('route:showItems', function () {
             var itemsView = new _this.Views.Items({
-                collection: items
+                collection: C
             });
 
             $('#coreCont').html(itemsView.render().$el);
@@ -30,8 +40,11 @@ window.AlexMoney = {
             });
 
             itemForm.on('form:submitted', function (attrs) {
-                attrs.id = items.isEmpty() ? 1 : (_.max(items.pluck('id')) + 1);
-                items.add(attrs);
+                //attrs.id = items.isEmpty() ? 1 : (_.max(items.pluck('id')) + 1);
+                //items.add(attrs);
+
+                attrs.id = _.max(C.pluck('id')) + 1 ;
+                C.create(attrs);
                 router.navigate('items', true);
             });
 
@@ -39,7 +52,7 @@ window.AlexMoney = {
         });
 
         router.on('route:editItem', function (id) {
-            var item = items.get(id),
+            var item = C.get(id),
                 itemForm;
 
             if (item) {
@@ -48,7 +61,8 @@ window.AlexMoney = {
                 });
 
                 itemForm.on('form:submitted', function (attrs) {
-                    item.set(attrs);
+                    //item.set(attrs);
+                    item.save(attrs);
                     router.navigate('items', true);
                 });
 
@@ -59,11 +73,30 @@ window.AlexMoney = {
         });
 
         router.on('route:other', function (url) {
-            console.log('jump to items') ;
             router.navigate('items');
         });
 
         Backbone.history.start();
+    }
+
+    ,createTestData: function () {
+        _.each([{
+                type: '基金'
+                ,time: '2015-03-05'
+                ,amount: 20000
+                ,gain: 2600
+                ,id:1
+            }
+            ,{
+                type: '股票'
+                ,time: '2015-03-03'
+                ,amount: 50000
+                ,gain: 6300
+                ,id:2
+            }
+        ], function (model) {
+            this.C.create(model);
+        }, this);
     }
 };
 

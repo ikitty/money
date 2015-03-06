@@ -18,6 +18,7 @@ AlexMoney.Views.Item = Backbone.View.extend({
 
     onClickDelete: function(e) {
         e.preventDefault();
-        this.model.collection.remove(this.model);
+        //this.model.collection.remove(this.model);
+        this.model.destroy();
     }
 });
