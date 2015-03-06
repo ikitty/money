@@ -4,56 +4,61 @@ window.ContactManager = {
     Views: {},
 
     start: function (data) {
-        var contacts = new ContactManager.Collections.Contacts(data.contacts),
+        var items = new ContactManager.Collections.Items(data.defaults),
             router = new ContactManager.Router();
 
         router.on('route:home', function () {
-            router.navigate('contacts', {
+            router.navigate('items', {
                 trigger: true,
                 replace: true
             });
         });
 
-        router.on('route:showContacts', function () {
-            var contactsView = new ContactManager.Views.Contacts({
-                collection: contacts
+        router.on('route:showItems', function () {
+            var itemsView = new ContactManager.Views.Items({
+                collection: items
             });
 
-            $('#coreCont').html(contactsView.render().$el);
+            $('#coreCont').html(itemsView.render().$el);
         });
 
-        router.on('route:newContact', function () {
-            var newContactForm = new ContactManager.Views.ContactForm({
-                model: new ContactManager.Models.Contact()
+        router.on('route:newItem', function () {
+            var itemForm = new ContactManager.Views.ItemForm({
+                model: new ContactManager.Models.Item()
             });
 
-            newContactForm.on('form:submitted', function (attrs) {
-                attrs.id = contacts.isEmpty() ? 1 : (_.max(contacts.pluck('id')) + 1);
-                contacts.add(attrs);
-                router.navigate('contacts', true);
+            itemForm.on('form:submitted', function (attrs) {
+                attrs.id = items.isEmpty() ? 1 : (_.max(items.pluck('id')) + 1);
+                items.add(attrs);
+                router.navigate('items', true);
             });
 
-            $('.main-container').html(newContactForm.render().$el);
+            $('#coreCont').html(itemForm.render().$el);
         });
 
-        router.on('route:editContact', function (id) {
-            var contact = contacts.get(id),
-                editContactForm;
+        router.on('route:editItem', function (id) {
+            var item = items.get(id),
+                itemForm;
 
-            if (contact) {
-                editContactForm = new ContactManager.Views.ContactForm({
-                    model: contact
+            if (item) {
+                itemForm = new ContactManager.Views.ItemForm({
+                    model: item
                 });
 
-                editContactForm.on('form:submitted', function (attrs) {
-                    contact.set(attrs);
-                    router.navigate('contacts', true);
+                itemForm.on('form:submitted', function (attrs) {
+                    item.set(attrs);
+                    router.navigate('items', true);
                 });
 
-                $('.main-container').html(editContactForm.render().$el);
+                $('#coreCont').html(itemForm.render().$el);
             } else {
-                router.navigate('contacts', true);
+                router.navigate('items', true);
             }
+        });
+
+        router.on('route:other', function (url) {
+            console.log('jump to items') ;
+            router.navigate('items');
         });
 
         Backbone.history.start();
@@ -64,8 +69,9 @@ window.ContactManager = {
 ContactManager.Router = Backbone.Router.extend({
     routes: {
         '': 'home',
-        'contacts': 'showContacts',
-        'contacts/new': 'newContact',
-        'contacts/edit/:id': 'editContact'
+        'items': 'showItems',
+        'items/new': 'newItem',
+        'items/edit/:id': 'editItem'
+        ,'*other': 'other'
     }
 });

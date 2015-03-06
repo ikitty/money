@@ -1,4 +1,4 @@
-ContactManager.Models.Contact = Backbone.Model.extend({
+ContactManager.Models.Item = Backbone.Model.extend({
     defaults: {
         type: '基金'
         ,time: null

@@ -1,8 +1,8 @@
-ContactManager.Views.Contacts = Backbone.View.extend({
+ContactManager.Views.Items = Backbone.View.extend({
   template: _.template($('#tplAllMoney').html()),
 
-  renderOne: function(contact) {
-    var itemView = new ContactManager.Views.Contact({model: contact});
+  renderOne: function(model) {
+    var itemView = new ContactManager.Views.Item({model: model});
     this.$('#moneyCont').append(itemView.render().$el);
   },
 

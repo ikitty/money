@@ -1,4 +1,4 @@
-ContactManager.Views.Contact = Backbone.View.extend({
+ContactManager.Views.Item = Backbone.View.extend({
     tagName: 'li',
     template: _.template($('#tplSingleMoney').html()),
 

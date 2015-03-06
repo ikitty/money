@@ -25,9 +25,9 @@
 
 <script type="text/template" id="tplAllMoney">
 <p class="text-center">
-    <a href="#contacts/new" class="btn btn-lg btn-outline">Add Rich</a>
+    <a href="#items/new" class="btn btn-lg btn-outline">Add Rich</a>
 </p>
-<ul id="moneyCont" class="money_list row contacts-container">
+<ul id="moneyCont" class="money_list row">
     <li>
         <div class="time">交易时间</div>
         <div class="type">类型</div>
@@ -47,7 +47,8 @@
 <div class="gain"><%- gain %></div>
 <div class="done"><%- done %></div>
 <div class="op">
-    <a href="#contacts/delete/<%- id %>" class="deleteItem">&#215;</a>
+    <a href="#items/edit/<%- id %>" class="editItem">编辑</a>
+    <a href="#items/delete/<%- id %>" class="deleteItem">删除</a>
 </div>
 </script>
 
@@ -89,7 +90,7 @@
             <button type="submit" class="btn btn-outline btn-lg btn-block">提交</button>
         </div>
         <div class="col-sm-3">
-            <a href="#contacts" class="btn btn-outline btn-lg btn-block">取消</a>
+            <a href="#items" class="btn btn-outline btn-lg btn-block">取消</a>
         </div>
     </div>
 </form>
@@ -100,16 +101,16 @@
 <script src="vendor/backbone/backbone.js"></script>
 
 <script src="app/js/app.js"></script>
-<script src="app/js/models/contact.js"></script>
-<script src="app/js/collections/contacts.js"></script>
-<script src="app/js/views/contact.js"></script>
-<script src="app/js/views/contacts.js"></script>
-<script src="app/js/views/contactForm.js"></script>
+<script src="app/js/models/item.js"></script>
+<script src="app/js/collections/items.js"></script>
+<script src="app/js/views/item.js"></script>
+<script src="app/js/views/items.js"></script>
+<script src="app/js/views/itemForm.js"></script>
 
 <script>
 $(function() {
     ContactManager.start({
-        contacts: [ {
+        defaults: [ {
             type: '基金'
             ,time: '2015-03-05'
             ,amount: 20000
