@@ -18,82 +18,80 @@
 
 <div class="container">
     <div class="row">
-        <div id="coreCont" class="col-xs-12 main-container">
+        <div id="coreCont" class="col-xs-12">
         </div>
     </div>
 </div>
 
 <script type="text/template" id="tplAllMoney">
-<p class="text-center">
-    <a href="#items/new" class="btn btn-lg btn-outline">Add Rich</a>
-</p>
-<ul id="moneyCont" class="money_list row">
-    <li>
-        <div class="time">交易时间</div>
-        <div class="type">类型</div>
-        <div class="amount">金额</div>
-        <div class="gain">收益</div>
-        <div class="done">结算</div>
-        <div class="op">操作</div>
-    </li>
-</ul>
+    <p class="text-center"><a href="#items/new" class="btn btn-lg btn-outline">Add Rich</a></p>
+    <ul id="moneyCont" class="money_list row">
+        <li>
+            <div class="time">交易时间</div>
+            <div class="type">类型</div>
+            <div class="amount">金额</div>
+            <div class="gain">收益</div>
+            <div class="done">结算</div>
+            <div class="op">操作</div>
+        </li>
+    </ul>
 </script>
 
 <!-- single item -->
 <script type="text/template" id="tplSingleMoney">
-<div class="time"><%- time %></div>
-<div class="type"><%- type %></div>
-<div class="amount"><%- amount %></div>
-<div class="gain"><%- gain %></div>
-<div class="done"><%- done %></div>
-<div class="op">
-    <a href="#items/edit/<%- id %>" class="editItem">编辑</a>
-    <a href="#items/delete/<%- id %>" class="deleteItem">删除</a>
-</div>
+    <div class="time"><%- time %></div>
+    <div class="type"><%- type %></div>
+    <div class="amount"><%- amount %></div>
+    <div class="gain"><%- gain %></div>
+    <div class="done"><%- done %></div>
+    <div class="op">
+        <a href="#items/edit/<%- id %>" class="editItem">编辑</a>
+        <a href="#items/delete/<%- id %>" class="deleteItem">删除</a>
+    </div>
 </script>
 
 <script type="text/template" id="tplNewItem">
-<h2 class="page-header text-center"><%= isNew ? 'Create' : 'Edit' %> Money</h2>
-<form role="form" class="form-horizontal contract-form">
-    <div class="form-group">
-        <label class="col-sm-4 control-label">时间:</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control inputTime" value="<%- time %>">
+    <h2 class="page-header text-center"><%= isNew ? 'Create' : 'Edit' %> Money</h2>
+    <form role="form" class="form-horizontal contract-form">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">时间:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control inputTime" value="<%- time %>">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-4 control-label">类型:</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control inputType" value="<%- type %>">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">类型:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control inputType" value="<%- type %>">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-4 control-label">金额:</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control inputAmount" value="<%- amount %>">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">金额:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control inputAmount" value="<%- amount %>">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-4 control-label">收益:</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control inputGain" value="<%- gain %>">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">收益:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control inputGain" value="<%- gain %>">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-4 control-label">结算:</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control inputDone" value="<%- done %>">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">结算:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control inputDone" value="<%- done %>">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-4 col-sm-3">
-            <button type="submit" class="btn btn-outline btn-lg btn-block">提交</button>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-3">
+                <button type="submit" class="btn btn-outline btn-lg btn-block">提交</button>
+            </div>
+            <div class="col-sm-3">
+                <a href="#items" class="btn btn-outline btn-lg btn-block">取消</a>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <a href="#items" class="btn btn-outline btn-lg btn-block">取消</a>
-        </div>
-    </div>
-</form>
+    </form>
 </script>
 
 <script src="vendor/jquery/jquery.js"></script>
@@ -109,7 +107,7 @@
 
 <script>
 $(function() {
-    ContactManager.start({
+    AlexMoney.start({
         defaults: [ {
             type: '基金'
             ,time: '2015-03-05'

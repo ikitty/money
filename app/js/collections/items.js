@@ -1,3 +1,4 @@
-ContactManager.Collections.Items = Backbone.Collection.extend({
-  model: ContactManager.Models.Item
+AlexMoney.Collections.Items = Backbone.Collection.extend({
+    //use this?
+    model: AlexMoney.Models.Item
 });

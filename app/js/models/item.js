@@ -1,4 +1,4 @@
-ContactManager.Models.Item = Backbone.Model.extend({
+AlexMoney.Models.Item = Backbone.Model.extend({
     defaults: {
         type: '基金'
         ,time: null

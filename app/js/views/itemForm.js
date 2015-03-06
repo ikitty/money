@@ -1,4 +1,4 @@
-ContactManager.Views.ItemForm = Backbone.View.extend({
+AlexMoney.Views.ItemForm = Backbone.View.extend({
     template: _.template($('#tplNewItem').html()),
 
     events: {

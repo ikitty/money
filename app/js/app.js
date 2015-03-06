@@ -1,11 +1,13 @@
-window.ContactManager = {
+window.AlexMoney = {
     Models: {},
     Collections: {},
     Views: {},
 
     start: function (data) {
-        var items = new ContactManager.Collections.Items(data.defaults),
-            router = new ContactManager.Router();
+        //var items = new AlexMoney.Collections.Items(data.defaults),
+        var items = new this.Collections.Items(data.defaults),
+            router = new this.Router();
+        var _this = this ; 
 
         router.on('route:home', function () {
             router.navigate('items', {
@@ -15,7 +17,7 @@ window.ContactManager = {
         });
 
         router.on('route:showItems', function () {
-            var itemsView = new ContactManager.Views.Items({
+            var itemsView = new _this.Views.Items({
                 collection: items
             });
 
@@ -23,8 +25,8 @@ window.ContactManager = {
         });
 
         router.on('route:newItem', function () {
-            var itemForm = new ContactManager.Views.ItemForm({
-                model: new ContactManager.Models.Item()
+            var itemForm = new _this.Views.ItemForm({
+                model: new _this.Models.Item()
             });
 
             itemForm.on('form:submitted', function (attrs) {
@@ -41,7 +43,7 @@ window.ContactManager = {
                 itemForm;
 
             if (item) {
-                itemForm = new ContactManager.Views.ItemForm({
+                itemForm = new _this.Views.ItemForm({
                     model: item
                 });
 
@@ -66,7 +68,7 @@ window.ContactManager = {
 };
 
 //=====from router.js
-ContactManager.Router = Backbone.Router.extend({
+AlexMoney.Router = Backbone.Router.extend({
     routes: {
         '': 'home',
         'items': 'showItems',
