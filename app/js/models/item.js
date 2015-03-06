@@ -4,6 +4,5 @@ AlexMoney.Models.Item = Backbone.Model.extend({
         ,time: null
         ,amount: 0
         ,gain: '未结算'
-        ,done: 0
     }
 });

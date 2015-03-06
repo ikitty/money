@@ -20,7 +20,6 @@ AlexMoney.Views.ItemForm = Backbone.View.extend({
             ,type: this.$('.inputType').val()
             ,amount: this.$('.inputAmount').val()
             ,gain: this.$('.inputGain').val()
-            ,done: this.$('.inputDone').val()
         });
     }
 });
