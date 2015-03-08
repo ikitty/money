@@ -1,3 +1,10 @@
+//set template syntax
+_.templateSettings = {  
+    evaluate : /\{%([\s\S]+?)\%\}/g,  
+    interpolate : /\{%=([\s\S]+?)\%\}/g,  
+    escape : /\{%-([\s\S]+?)%\}/g  
+} ;
+
 window.AlexMoney = {
     Models: {},
     Collections: {},
@@ -6,7 +13,6 @@ window.AlexMoney = {
     start: function (data) {
         //var items = new AlexMoney.Collections.Items(data.defaults),
         //var items = new this.Collections.Items(data.defaults),
-
         var _this = this 
             ,router = new this.Router()
             ,C = new AlexMoney.Collections.Items()
